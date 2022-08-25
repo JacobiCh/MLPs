@@ -1,8 +1,8 @@
 # MLPs
 
 # Data files:
-# MNIST.zip needs to be unzipped and two data files named mnist_train.csv and mnist_test.csv are the MNIST database.
-# wheat-seeds.csv data file is used in activation_comparison.py which is to compare and choose activation function experiment.
+ MNIST.zip needs to be unzipped and two data files named mnist_train.csv and mnist_test.csv are the MNIST database.
+ wheat-seeds.csv data file is used in activation_comparison.py which is to compare and choose activation function experiment.
 
 # Coding:
 # tanh.py and mlp_sigmod.py are the classes constructing a MLP step by step and these two classes would be imported in activation_comparison.py.They also do not have main methods,would be runnable in activation_comparison.py.
