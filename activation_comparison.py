@@ -125,11 +125,15 @@ def convergence_comparison(errors1,errors2,epoches):
     plt.title('Convergence graph comparison')
     plt.show()    
 
+def main():
+    epoches = [n for n in range(500)]
+    dataset = load_prepared_dataset('wheat-seeds.csv')
+    dataset2 = load_prepared_dataset('wheat-seeds.csv')
+    errors1 = sigmod_activation_results(dataset,dataset)
+    errors2 = tanh_activation_results(dataset2,dataset2)
+    convergence_comparison(errors1,errors2,epoches)
+    print(dataset)
 
-epoches = [n for n in range(500)]
-dataset = load_prepared_dataset('wheat-seeds.csv')
-dataset2 = load_prepared_dataset('wheat-seeds.csv')
-errors1 = sigmod_activation_results(dataset,dataset)
-errors2 = tanh_activation_results(dataset2,dataset2)
-convergence_comparison(errors1,errors2,epoches)
-print(dataset)
+if __name__=='__main__':
+    main()
+

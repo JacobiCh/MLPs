@@ -155,6 +155,7 @@ def predict(mlp,data):#Prediction according to updated weights in mlp
 def plot_confusion_matrix(y_true, y_pred, classes,
                           normalize=False,
                           title=None):
+
     if not title:
         if normalize:
             title = 'Normalized confusion matrix'
@@ -162,44 +163,45 @@ def plot_confusion_matrix(y_true, y_pred, classes,
             title = 'Confusion matrix, without normalization'
 
     # Compute confusion matrix
-    confusion = confusion_matrix(y_true, y_pred)
+    cm = confusion_matrix(y_true, y_pred)
     # Only use the labels that appear in the data
     classes = classes[unique_labels(y_true, y_pred)]
     if normalize:
-        confusion = confusion.astype('float') / confusion.sum(axis=1)[:, np.newaxis]
+        cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
         #print("Normalized confusion matrix")
     else:
         pass
         #print('Confusion matrix, without normalization')
 
-    fig, plot1 = plt.subplots()
-    im = plot1.imshow(confusion, interpolation='nearest')
-    plot1.figure.colorbar(im, ax=plot1)
-    # show all ticks
-    plot1.set(xticks=np.arange(confusion.shape[1]),
-           yticks=np.arange(confusion.shape[0]),
-           # label with the respective list entries
+    fig, ax = plt.subplots()
+    im = ax.imshow(cm, interpolation='nearest')
+    ax.figure.colorbar(im, ax=ax)
+    # We want to show all ticks...
+    ax.set(xticks=np.arange(cm.shape[1]),
+           yticks=np.arange(cm.shape[0]),
+           # ... and label them with the respective list entries
            xticklabels=classes, yticklabels=classes,
            title=title,
            ylabel='True label',
            xlabel='Predicted label')
 
-    plot1.set_ylim(len(classes)-0.5, -0.5)
+    ax.set_ylim(len(classes)-0.5, -0.5)
 
     # Rotate the tick labels and set their alignment.
-    plt.setp(plot1.get_xticklabels(), rotation=45, ha="right",
+    plt.setp(ax.get_xticklabels(), rotation=45, ha="right",
              rotation_mode="anchor")
+
     # Loop over data dimensions and create text annotations.
-    format = '.2f' if normalize else 'd'
-    thresh = confusion.max() / 2.
-    for i in range(confusion.shape[0]):
-        for j in range(confusion.shape[1]):
-            plot1.text(j, i, format(confusion[i, j], format),
+    fmt = '.2f' if normalize else 'd'
+    thresh = cm.max() / 2.
+    for i in range(cm.shape[0]):
+        for j in range(cm.shape[1]):
+            ax.text(j, i, format(cm[i, j], fmt),
                     ha="center", va="center",
-                    color="white" if confusion[i, j] > thresh else "black")
+                    color="white" if cm[i, j] > thresh else "black")
     fig.tight_layout()
     fig.show()
-    return plot1
+    return ax
 
 
 #Add evaluating metrics of trained model

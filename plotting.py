@@ -1,6 +1,6 @@
 import numpy as np
 from matplotlib import pyplot as plt
-
+# Plotting training graph together 
 def training_graph_combination():
     x = [i for i in range(20)]
     times_train2 = np.load('2_times_error.npy')
@@ -18,7 +18,7 @@ def training_graph_combination():
     plt.title('Training accuracy graph with different sizes of errors')
     plt.show()
 
-
+# Plotting training graph together with model error
 def training_graph_combination_with_model_e():
     x = [i for i in range(20)]
     times_train2 = np.load('2_times_error.npy')
@@ -37,6 +37,8 @@ def training_graph_combination_with_model_e():
     plt.ylabel('Training accuracy')
     plt.title('Training accuracy graph with different sizes of errors')
     plt.show()
+
+# Plotting testing graph together 
 def testing_graph_combination():
     x = [i for i in range(20)]
     times_test2 = np.load('2_times_error_test.npy')
@@ -54,6 +56,7 @@ def testing_graph_combination():
     plt.title('Testing accuracy graph with different sizes of errors')
     plt.show()    
 
+# Plotting testing graph together with model error
 def testing_graph_combination_with_model_e():
     x = [i for i in range(20)]
     times_test2 = np.load('2_times_error_test.npy')
@@ -72,4 +75,13 @@ def testing_graph_combination_with_model_e():
     plt.ylabel('Testing accuracy')
     plt.title('Testing accuracy graph with different sizes of errors')
     plt.show()  
-testing_graph_combination_with_model_e()
+
+def main():
+    # Main running methods
+    training_graph_combination()
+    training_graph_combination_with_model_e()
+    testing_graph_combination()
+    testing_graph_combination_with_model_e()
+
+if __name__=='__main__':
+    main()
