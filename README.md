@@ -1,14 +1,14 @@
 # MLPs
 
 # Data files:
- MNIST.zip needs to be unzipped and two data files named mnist_train.csv and mnist_test.csv are the MNIST database.
+ MNIST.zip needs to be unzipped and two data files named mnist_train.csv and mnist_test.csv are the MNIST database.  
  wheat-seeds.csv data file is used in activation_comparison.py which is to compare and choose activation function experiment.
 
 # Coding:
-# tanh.py and mlp_sigmod.py are the classes constructing a MLP step by step and these two classes would be imported in activation_comparison.py.They also do not have main methods,would be runnable in activation_comparison.py.
-# activation_comparison.py is the first experimenting class for comparing and choosing activation function before formal experiments.Thus,it can be dirctly runned to generate comparison results including plots and printings.
-# final_mlp.py is the basic structured class(defination) of constructing MLP for training,no main method to run.Other experimenting classes need importing this class for constructing MLP.
-# utils.py is the tool class including all the implemented loading,plotting,dividing methods,error generating and etc.This class would also be imported in other experimenting classes like final_mlp.py.
+tanh.py and mlp_sigmod.py are the classes constructing a MLP step by step and these two classes would be imported in activation_comparison.py.They also do not have main methods,would be runnable in activation_comparison.py.
+activation_comparison.py is the first experimenting class for comparing and choosing activation function before formal experiments.Thus,it can be dirctly runned to generate comparison results including plots and printings.
+final_mlp.py is the basic structured class(defination) of constructing MLP for training,no main method to run.Other experimenting classes need importing this class for constructing MLP.
+utils.py is the tool class including all the implemented loading,plotting,dividing methods,error generating and etc.This class would also be imported in other experimenting classes like final_mlp.py.
 
 # Experiments:
 # With basic constructor(defination) of MLP in final_mlp and tool class named utils.py.All experimenting classes import both of them.There are main methods in these classes so that they can be runned directly.
